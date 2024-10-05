@@ -3,16 +3,16 @@ import java.util.List;
 
 public class Movie {
     private String title;
-    private List<Actor> cast; // List of actors representing the cast
-    private String category;
+    private List<Actor> cast;
+    private List<Category> categoryList;
     private String releaseDate;
     private double budget;
     private double rating;
 
-    public Movie(String title, List<Actor> cast, String category, String releaseDate, double budget, double rating) {
+    public Movie(String title, List<Actor> cast, List<Category> categoryList, String releaseDate, double budget, double rating) {
         this.title = title;
         this.cast = cast;
-        this.category = category;
+        this.categoryList = categoryList;
         this.releaseDate = releaseDate;
         this.budget = budget;
         this.rating = rating;
@@ -34,12 +34,12 @@ public class Movie {
         this.cast = cast;
     }
 
-    public String getCategory() {
-        return category;
+    public List<Category> getCategoryList() {
+        return categoryList;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
     public String getReleaseDate() {
@@ -71,7 +71,7 @@ public class Movie {
         return "Movie{" +
                 "title='" + title + '\'' +
                 ", cast=" + cast +
-                ", category='" + category + '\'' +
+                ", categoryList='" + categoryList + '\'' +
                 ", releaseDate='" + releaseDate + '\'' +
                 ", budget=" + budget +
                 ", rating=" + rating +

@@ -10,7 +10,22 @@ public class User {
         this.email = email;
     }
 
-    // Getters and Setters for email and favoriteMovies
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Movie> getFavoriteMovies() {
+        return favoriteMovies;
+    }
+
+    public void setFavoriteMovies(List<Movie> favoriteMovies) {
+        this.favoriteMovies = favoriteMovies;
+    }
+
     public void addFavoriteMovie(Movie movie) {
         favoriteMovies.add(movie);
     }

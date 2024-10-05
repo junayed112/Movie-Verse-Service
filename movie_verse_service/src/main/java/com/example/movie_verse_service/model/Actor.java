@@ -2,7 +2,7 @@ package com.example.movie_verse_service.model;
 
 public class Actor {
     private String name;
-    private String role; // Role the actor played in the movie
+    private String role;
 
     public Actor(String name, String role) {
         this.name = name;
