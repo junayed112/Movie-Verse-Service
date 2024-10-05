@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @DeleteMapping("/remove-favorite")
-    public ResponseEntity<String> removeFavorite(@RequestParam String email, @RequestBody Long movieId) {
+    public ResponseEntity<String> removeFavorite(@RequestParam String email, @RequestParam Long movieId) {
         userService.removeMovieFromFavorites(email, movieId);
         return ResponseEntity.ok("Successfully Removed From Favorites");
     }
