@@ -4,6 +4,9 @@ public class Actor {
     private String name;
     private String role;
 
+    public Actor() {
+    }
+
     public Actor(String name, String role) {
         this.name = name;
         this.role = role;
@@ -28,7 +31,10 @@ public class Actor {
 
     @Override
     public String toString() {
-        return name + " as " + role;
+        return "Actor{" +
+                "name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
 

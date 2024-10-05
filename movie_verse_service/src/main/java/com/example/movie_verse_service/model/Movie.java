@@ -79,13 +79,26 @@ public class Movie {
     @Override
     public String toString() {
         return "Movie{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", cast=" + cast +
-                ", categoryList='" + categoryList + '\'' +
+                ", categoryList=" + categoryList +
                 ", releaseDate='" + releaseDate + '\'' +
                 ", budget=" + budget +
                 ", rating=" + rating +
                 '}';
     }
+
+    //    @Override
+//    public String toString() {
+//        return "Movie{" +
+//                "title='" + title + '\'' +
+//                ", cast=" + cast +
+//                ", categoryList='" + categoryList + '\'' +
+//                ", releaseDate='" + releaseDate + '\'' +
+//                ", budget=" + budget +
+//                ", rating=" + rating +
+//                '}';
+//    }
 }
 

@@ -28,6 +28,11 @@ public class MovieController {
         return ResponseEntity.ok(movieService.searchMovies(query));
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Movie>> getAllMovies() {
+        return ResponseEntity.ok(movieService.getAllMovies());
+    }
+
     @GetMapping("/details")
     public ResponseEntity<Movie> getMovieDetails(@PathVariable Long movieId) {
         return ResponseEntity.ok(movieService.getMovieDetails(movieId));

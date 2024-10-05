@@ -2,6 +2,9 @@ package com.example.movie_verse_service.model;
 public class Category {
     private String categoryName;
 
+    public Category() {
+    }
+
     public Category(String categoryName) {
         this.categoryName = categoryName;
     }
@@ -13,6 +16,13 @@ public class Category {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryName='" + categoryName + '\'' +
+                '}';
     }
 }
 

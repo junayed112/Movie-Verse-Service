@@ -3,6 +3,7 @@ package com.example.movie_verse_service.service;
 import com.example.movie_verse_service.model.Movie;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class MovieService {
-    private List<Movie> movies;
+    private List<Movie> movies = new ArrayList<>();
 
     public void addMovie(Movie movie) {
         movies.add(movie);

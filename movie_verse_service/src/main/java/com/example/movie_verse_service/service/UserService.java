@@ -4,13 +4,14 @@ import com.example.movie_verse_service.model.Movie;
 import com.example.movie_verse_service.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService {
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     private final MovieService movieService;
 
@@ -19,12 +20,15 @@ public class UserService {
     }
 
     public User register(String name, String email) {
-        if(isEmailExists(email)){
+        Boolean status = isEmailExists(email);
+        if(status){
             throw new IllegalArgumentException("Email already exists");
         }
-        User user = new User(name, email);
-        users.add(user);
-        return user;
+        else {
+            User user = new User(name, email);
+            users.add(user);
+            return user;
+        }
     }
 
     private boolean isEmailExists(String email) {

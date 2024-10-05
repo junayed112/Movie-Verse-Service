@@ -42,4 +42,13 @@ public class User {
     public void removeFavoriteMovie(Movie movie) {
         favoriteMovies.remove(movie);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", favoriteMovies=" + favoriteMovies +
+                '}';
+    }
 }
