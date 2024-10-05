@@ -1,7 +1,10 @@
 package com.example.movie_verse_service.controller;
+
+import com.example.movie_verse_service.dto.RegisterDto;
 import com.example.movie_verse_service.model.Movie;
 import com.example.movie_verse_service.model.User;
 import com.example.movie_verse_service.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,26 +22,32 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public User register(@RequestParam String email) {
-        return userService.register(email);
+    public ResponseEntity<?> register(@RequestBody RegisterDto registerDto) {
+        User user = userService.register(registerDto.getName(), registerDto.getEmail());
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{email}/favorites")
-    public ResponseEntity<List<Movie>> getFavorites(@PathVariable String email) {
-        Optional<User> user = userService.getUser(email);
-        return ResponseEntity.ok(user.map(User::getFavoriteMovies).orElse(null));
+    @GetMapping("/favorites")
+    public ResponseEntity<List<Movie>> getFavorites(@RequestParam String email) {
+        List<Movie> favoriteMovies = userService.getFavoriteMovies(email);
+        return ResponseEntity.ok(favoriteMovies);
     }
 
-    @PostMapping("/{email}/favorites")
-    public ResponseEntity<String> addFavorite(@PathVariable String email, @RequestBody Movie movie) {
-        userService.getUser(email).ifPresent(user -> user.addFavoriteMovie(movie));
+    @PostMapping("/add-favorites")
+    public ResponseEntity<String> addFavorite(@RequestParam String email, @RequestParam Long movieId) {
+        userService.addMovieToFavorites(email, movieId);
         return ResponseEntity.ok("Successfully Added as Favorites");
     }
 
-    @DeleteMapping("/{email}/favorites")
-    public ResponseEntity<String> removeFavorite(@PathVariable String email, @RequestBody Movie movie) {
-        userService.getUser(email).ifPresent(user -> user.removeFavoriteMovie(movie));
+    @DeleteMapping("/remove-favorite")
+    public ResponseEntity<String> removeFavorite(@RequestParam String email, @RequestBody Long movieId) {
+        userService.removeMovieFromFavorites(email, movieId);
         return ResponseEntity.ok("Successfully Removed From Favorites");
+    }
+
+    @GetMapping("/favorites/search")
+    public ResponseEntity<List<Movie>> searchFavoriteMovies(@RequestParam String email, @RequestParam String query) {
+        return ResponseEntity.ok(userService.searchFavoriteMovies(email, query));
     }
 }
 

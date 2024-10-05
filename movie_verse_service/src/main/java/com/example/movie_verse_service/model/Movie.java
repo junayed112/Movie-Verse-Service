@@ -2,6 +2,7 @@ package com.example.movie_verse_service.model;
 import java.util.List;
 
 public class Movie {
+    private Long id;
     private String title;
     private List<Actor> cast;
     private List<Category> categoryList;
@@ -9,13 +10,22 @@ public class Movie {
     private double budget;
     private double rating;
 
-    public Movie(String title, List<Actor> cast, List<Category> categoryList, String releaseDate, double budget, double rating) {
+    public Movie(Long id, String title, List<Actor> cast, List<Category> categoryList, String releaseDate, double budget, double rating) {
+        this.id = id;
         this.title = title;
         this.cast = cast;
         this.categoryList = categoryList;
         this.releaseDate = releaseDate;
         this.budget = budget;
         this.rating = rating;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
